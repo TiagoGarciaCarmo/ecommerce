@@ -59,11 +59,11 @@ Essas instruções permitirão que você obtenha uma cópia do projeto funcionan
  
 
   ## 🛠️ Tecnologias Utilizadas
-  -SpringBoot - O framework web usado
-  -Maven - Gerente de Dependência
-  -SQL Server - Banco de dados relacional
+  - SpringBoot - O framework web usado
+  - Maven - Gerente de Dependência
+  - SQL Server - Banco de dados relacional
 
   ## ✒️ Autores
-  -Caique Nogueira Silva — Desenvolvedor
-  -Joyce Gabriella da Silva Mesquita — Documentação
-  -Tiago Garcia do Carmo — Desenvolvedor
+  - Caique Nogueira Silva — Desenvolvedor
+  - Joyce Gabriella da Silva Mesquita — Documentação
+  - Tiago Garcia do Carmo — Desenvolvedor
