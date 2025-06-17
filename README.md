@@ -1,34 +1,70 @@
-# E-commerce Emporio Grão
-Site de uma loja online de venda de grãos
-# 🚀 Começando
-Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
+# 🛒 E-commerce Empório Grão
+Site de uma loja online de venda de grãos, com funcionalidades de cadastro, consulta, atualização e exclusão de produtos, categorias e usuários.
 
-Consulte Implantação para saber como implantar o projeto.
-# 🔧 Instalação
-  1. Certifique-se de ter o java jdk 17, SQL Server Management Studio instaladoe o Postman instalado.
-  2. Baixe os dois arquivos: ecommerce.rar e o word do projeto de extensão.
-  3. Extraia o .rar no seu local de preferência.
-  4. Abra o SSMS, efetue o login via autenticação sql server e crie um banco com o comando "create dabatase (nome do banco)"
-  5. Abra o Word baixado, em "4. Etapa 2", copie as duas views, a procedure e a trigger e cole no SSMS e execute (F5). Ps: certifique-se de estar usando o banco (use bd...).
+---
+
+## 🚀 Começando
+Essas instruções permitirão que você obtenha uma cópia do projeto funcionando localmente para fins de desenvolvimento e testes.
+
+---
+
+## 🔧 Instalação
+
+### Pré-requisitos:
+- Java JDK 17
+- Spring Boot
+- Maven
+- SQL Server Management Studio (SSMS)
+- Postman
+
+### Passos:
+
+1. Baixe os arquivos:
+   - `ecommerce.rar` (projeto Spring Boot)
+   - Documento Word com o projeto de extensão
+
+2. Extraia o `.rar` no local de sua preferência.
+
+3. No SSMS:
+   - Faça login via **Autenticação SQL Server**
+   - Crie o banco de dados:
+     ```sql
+     CREATE DATABASE NomeDoBanco;
+     ```
+   - No Word, vá até a seção **4. Etapa 2**, copie e execute no SSMS:
+     - As **duas views** (vw_usuarios_compras) e (vw_usuarios_compras_detalhado)
+     - A **procedure** (sp_registrar_compra_com_itens)
+     - A **trigger** (trg_atualizar_estoque)
+   > Certifique-se de estar usando o banco correto:
+   ```sql
+   USE NomeDoBanco;
+
   6. Abra a pasta ecommerce na IDE de sua preferência, abra /src/main/resources/application.properties e altere o:
      spring.datasource.username= "seu usuário"
      spring.datasource.password= "sua senha"
      spring.datasource.url=jdbc:sqlserver://tiago:1433;databaseName="---";encrypt=true;trustServerCertificate=true;
                                                                     /\ altere os --- para o nome do banco criado no SSMS
-  8. Execute o backend, assim as tabelas serão criadas automaticamente no seu banco.
-  9. Para ter certeza de que o backend e o banco estão 100%, abra o Postman, selecione GET e coloque a URL: http://localhost:8080/categorias. Se der um retorno "200 OK", está tudo funcionando.
+  8. Execute o backend, o Hibernate criará automaticamente as tabelas no banco.
+  9. Teste no POSTMAN:
+      Método GET:
+      http://localhost:8080/categorias
+      Se o retorno for 200 OK, a API está funcionando corretamente.
 
-# ⚙️ Executando os testes
-  Nosso projeto é basicamente um CRUD, e todos os testes são feitos pelo POSTMAN.
-  Para inserir, utilize o POST, para ler, o GET, para Atualizar o PUT e para deletar o DELETE.
-  Todos os endpoints estão na classe controller. Ex: (POST > body > raw (JSON)) http://localhost:8080/cadastrar para criar um usuário novo, ou (GET) http://localhost:8080/produtos para ver todos os produtos cadastrados no sistema.
+ ## ⚙️ Executando os testes (POSTMAN)
+  | Operação  | Método | URL Exemplo                           | Observação                |
+  | --------- | ------ | ------------------------------------- | ------------------------- |
+  | Criar     | POST   | `http://localhost:8080/cadastrar`     | Body em JSON              |
+  | Consultar | GET    | `http://localhost:8080/produtos`      | Retorna lista de produtos |
+  | Atualizar | PUT    | `http://localhost:8080/produtos/{id}` | Body com os novos dados   |
+  | Deletar   | DELETE | `http://localhost:8080/produtos/{id}` | Remove produto do sistema |
+ 
 
-# 🛠️ Construído com
+  ## 🛠️ Tecnologias Utilizadas
   SpringBoot - O framework web usado
   Maven - Gerente de Dependência
+  SQL Server - Banco de dados relacional
 
-  # ✒️ Autores
-  Desenvolvedores
-  Tiago Garcia do Carmo e Caique Nogueira Silva
-  Documentação
-  Joyce Gabriella da Silva Mesquita
+  ## ✒️ Autores
+  Caique Nogueira Silva — Desenvolvedor
+  Joyce Gabriella da Silva Mesquita — Documentação
+  Tiago Garcia do Carmo — Desenvolvedor
