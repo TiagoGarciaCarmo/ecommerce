@@ -40,15 +40,14 @@ Essas instruções permitirão que você obtenha uma cópia do projeto funcionan
    USE NomeDoBanco;
 
   6. Abra a pasta ecommerce na IDE de sua preferência, abra /src/main/resources/application.properties e altere o:
-     spring.datasource.username= "seu usuário"
-     spring.datasource.password= "sua senha"
-     spring.datasource.url=jdbc:sqlserver://tiago:1433;databaseName="---";encrypt=true;trustServerCertificate=true;
-                                                                    /\ altere os --- para o nome do banco criado no SSMS
+     - spring.datasource.username= "seu usuário"
+     - spring.datasource.password= "sua senha"
+     - spring.datasource.url=jdbc:sqlserver://tiago:1433;databaseName="---";encrypt=true;trustServerCertificate=true;
   8. Execute o backend, o Hibernate criará automaticamente as tabelas no banco.
   9. Teste no POSTMAN:
-      Método GET:
-      http://localhost:8080/categorias
-      Se o retorno for 200 OK, a API está funcionando corretamente.
+     - Método GET:
+     - http://localhost:8080/categorias
+     - Se o retorno for 200 OK, a API está funcionando corretamente.
 
  ## ⚙️ Executando os testes (POSTMAN)
   | Operação  | Método | URL Exemplo                           | Observação                |
