@@ -1,0 +1,120 @@
+Cadastro Categorias - http://localhost:8080/categorias
+{
+  "descricao": "categoria1"
+}
+
+
+Cadastro Produtos - http://localhost:8080/produtos
+{
+  "descricao": "ProdutoTeste1",
+  "precoVenda": 10.00,
+  "estoque": 10,
+  "categoria": {
+    "id": 1
+  }
+}
+
+
+Cadastro - Usuario/Login 
+http://localhost:8080/usuarios/cadastrar
+{
+  "nome": "TiagoGarcia",
+  "senha": "1234",
+  "email": "tiago@email.com",
+  "cpf": "123.456.789-00",
+  "dataNascimento": "2000-05-10"
+}
+
+
+http://localhost:8080/usuarios/login
+{
+  "senha": "1234",
+  "email": "tiago@email.com"
+}
+
+
+Cadastro Compra - http://localhost:8080/compras
+{
+  "desconto": 10.0,
+  "tipoPagamento": "PIX",
+  "total": 189.90,
+  "usuario": {
+    "id": 1
+  }
+}
+
+Cadastro ItensCompra - http://localhost:8080/itenscompra
+{
+  "quantidade": 2,
+  "valor": 59.90,
+  "desconto": 5.00,
+  "compra": {
+    "id": 1
+  },
+  "produto": {
+    "id": 1
+  }
+}
+
+
+VIEW - http://localhost:8080/usuarios-compras
+           http://localhost:8080/usuarios-compras-detalhado
+
+
+
+
+PROCEDURE 
+http://localhost:8080/relatorios/total-vendido?idProduto=1
+
+
+  CREATE PROCEDURE sp_total_vendido_por_produto_periodo
+    @idProduto INT,
+    @dataInicio DATETIME = NULL,
+    @dataFim DATETIME = NULL
+AS
+BEGIN
+    SELECT 
+        p.id AS idProduto,
+        p.descricao,
+        ISNULL(SUM(ic.quantidade), 0) AS totalVendido
+    FROM tbprodutos p
+    LEFT JOIN tbitenscompra ic ON ic.idproduto = p.id
+    LEFT JOIN tbcompras c ON ic.idcompra = c.id
+    WHERE p.id = @idProduto
+      AND (
+          (@dataInicio IS NULL OR c.datahora >= @dataInicio)
+          AND (@dataFim IS NULL OR c.datahora <= @dataFim)
+      )
+    GROUP BY p.id, p.descricao;
+END
+go
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
